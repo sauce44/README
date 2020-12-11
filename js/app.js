@@ -47,8 +47,9 @@ const $computer = $('<div>')
 
 
 class Player {
-    constructor(name){
+    constructor(name, $el){
         this.name = playerName;
+        this.$el = $el;
     }
     moveUp(){
         $(document).keydown(function(event) { 
@@ -92,7 +93,10 @@ class Player {
 
 
 
-class Computer {
+class Computer  {
+    constructor($el){
+        this.$el = $el;
+    }
     move(){
         $computer.css('transform', 'translate(10px, 10px)');
         $computer.css('transform', 'translate(10px, -10px)');
@@ -187,11 +191,7 @@ const trivia = [
     }
 ];
 
-// trivia.map(item => {
-//     return `<div data-name='${item.question}' id='${item.id}'>${item.question}</div>`
-// })
-// .appendTo($questionModal)
-// .css('display', 'none');
+
 
 
 const $questionModal = $('<div>')
@@ -211,7 +211,10 @@ const $userSubmit = $('button')
 .attr('id', 'userSubmit')
 .appendTo('#userInput');
 
-
+const $trivia = trivia.map(item => {
+    return $(`<div data-name='${item.question}' id='${item.id}'>${item.question}</div>`).css('display', 'none')
+    .appendTo($questionModal);
+})
 
 
 
@@ -224,13 +227,13 @@ const compVersion = () => {
         for(let i = 0; i < trivia.length - 1; i++){
             setTimeout(questions, 3000);
             function questions(){
-                const $triviaQuestion = $('<div>')
+                let $triviaQuestion = $('<div>')
                 $triviaQuestion = trivia[i].question.appendTo($questionModalText);
                 } 
                 if(trivia[i].answer == playerAnswer){
-                    player.Move();
+                    player.move();
                 } else {
-                    alert('I\'m sorry that was wrong, the computer will go.');
+                    alert(`I\'m sorry ${player.name} that was wrong, the computer will go.`);
                     computer();
         }
     }
@@ -262,7 +265,7 @@ const playerVersion = () => {
                 if(trivia[i].answer == playerAnswer){
                     player.Move();
                 } else {
-                    alert('I\'m sorry that was wrong, player 2 will go.');
+                    alert(`I\'m sorry ${player.name}that was wrong, player 2 will go.`);
                     player2();
         }
     }   
@@ -310,6 +313,7 @@ $(()=>{
     $form.on('submit', (event)=> {
         event.preventDefault();
         playerName = $input.val();
+        $input.val('');
         console.log(playerName);
     }) 
     $compBtn.on('click', (event)=> {
@@ -341,12 +345,9 @@ $(()=>{
     $closeBtn.on('click', closeModal);
     $closeBtn1.on('click', closeModal1);
 
-    const player = new Player(playerName);
-    player = $player;
-    const player_2 = new Player('');
-    player_2 = $player2
-    const computer = new Computer();
-    computer = $computer;
+    const player = new Player(playerName, $player);
+    const player_2 = new Player('', $player2);
+    const computer = new Computer($computer);
 
 })
 
