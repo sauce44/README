@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script
+    src="https://code.jquery.com/jquery-3.2.1.min.js"
+    integrity="sha256-hwg4gsxgFZhOsEEamdOYGBf13FyQuiTwlAQgxVSNgt4="
+    crossorigin="anonymous"></script>
+    <script src="js/app.js"></script>
+    <link href="css/style.css" rel="stylesheet">
+    <title>Code Race</title>
+</head>
+<body>
+    <header>
+        <div id='funpage'>
+                <button id='start'>
+                    <h1>Welcome</h1>
+                </button>
+        </div>
+    </header>
+    <section id='everything'>
+        <div id='modal1'>
+                <div id='modaltext1'>
+                    <a id='close1' href='#'>
+                        Close
+                    </a>
+                    <form>
+                    <label for='name'>
+                        What's your name?: 
+                        <input type='text' id='name'/>
+                    </label>
+                    <input type='submit' id='submit-button' value='Submit' />
+                    </form>
+                    <p>
+                        Choose either computer or 2 Player
+                    </p>
+                    <button id='compBtn'>
+                        Computer
+                    </button>
+                    <p>
+                    
+                    </p>
+                </div>
+        </div>
+        <button id='openModal'>Instructions</button>
+        <div id='modal'>
+            <div id='modaltext'>
+                <a id='close' href='#'>Close</a>
+                <h1>Welcome to the Race!!</h1>
+                <p>
+                    It's time to race, you can choose either to race the computer or another player. Every turn you'll have to answer a question, if you get it wrong you'll lose your turn. Good Luck!
+                </p>
+            </div>
+        </div>
+        <div id='questionModal'>
+            <div id='questionModalText'>
+                <form>
+                    <label for='name'>
+                        What's your answer?: 
+                        <input type='text' id='answer'/>
+                    </label>
+                    <input type='submit' id='submit-button1' value='Submit' />
+                    </form>
+            </div>
+        </div>
+        <div id='gameboard'>
+            <img id='gameboard' src='./index.jpg'>
+        </div>
+        <div id=player>
+
+        </div>
+        <div id=player2>
+
+        </div>
+        <div id='computer'>
+
+        </div>
+    </section>
+</body>
+</html>

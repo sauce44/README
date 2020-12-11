@@ -17,81 +17,55 @@ let player2Right = '';
 // playerAnswer = $('#userInput').val();
 
 
-//Declare style for all game objects.
-const $player = $('<div>')
-.attr('id', 'styleMe')
-.css('height', '10px')
-.css('width', '10px')
-.css('border-radius', '50%')
-.css('position', 'absolute')
-.css('color', 'black')
-.css('z-index', '999')
-.insertAfter('#gameboard');
-const $player2 = $('<div>')
-.attr('id', 'styleMe1')
-.css('height', '10px')
-.css('width', '10px')
-.css('border-radius', '50%')
-.css('position', 'absolute')
-.css('color', 'blue')
-.css('display', 'none')
-.css('z-index', '999')
-.appendTo('#everything');
-const $computer = $('<div>')
-.attr('id', 'styleComp')
-.css('height', '10px')
-.css('width', '10px')
-.css('border-radius', '50%')
-.css('position', 'absolute')
-.css('color', 'green')
-.css('z-index', '999')
-.appendTo('#everything');
-
 //Player classes, should control the arrow key movement
 class Player {
     constructor(name, $el){
         this.name = playerName;
         this.$el = $el;
     }
-    moveUp(){
-        $(document).keydown(function(event) { 
-            if (event.which == '38') { //Up Arrow
-                $("#styleMe").finish().animate({ 
-                    top: "-=50" 
-                }); 
-            } 
-        });  
+    move1() {
+
     }
-    moveDown(){
-        $(document).keydown(function(event) { 
-            if (event.which == '40') {  //Down Arrow
-                $("#styleMe").finish().animate({ 
-                    top: "+=50" 
-                }); 
-            } 
-        });  
+    move2(){
+
     }
-    moveLeft(){
-        $(document).keydown(function(event) { 
-            if (event.which == '39') { //Right Arrow
-                $("#styleMe").finish().animate({ 
-                    left: "+=50"
-                }); 
-            } 
-        });  
+    move3(){
+
     }
-    moveRight(){
-        $(document).keydown(function(event) { 
-            if (event.which == '37') { //Left Arrow
-                $("#styleMe").finish().animate({ 
-                    left: "-=50" 
-                }); 
-            } 
-        });  
+    move4(){
+        
+    }
+    move5(){
+        
+    }
+    move6(){
+        
+    }
+    move7(){
+        
+    }
+    move8(){
+        
+    }
+    move9(){
+        
+    }
+    move10(){
+        
+    }
+    move11(){
+        
+    }   
+    move12(){
+        
+    }
+    move13(){
+        
+    }
+    move14(){
+        
     }
 }
-
-
 
 
 // Computer class, should have premade movements through board.
@@ -99,32 +73,64 @@ class Computer  {
     constructor($el){
         this.$el = $el;
     }
-    move(){
+    move1() {
         $computer.css('transform', 'translate(10px, 10px)');
         $computer.css('transform', 'translate(10px, -10px)');
         $computer.css('transform', 'translate(10px, 5px)');
+    }
+    move2(){
         $computer.css('transform', 'translate(10px, 5px)');
         $computer.css('transform', 'translate(10px, 5px)');
         $computer.css('transform', 'translate(-2px, 4px)');
+    }
+    move3(){
         $computer.css('transform', 'translate(4px, 10px)');
         $computer.css('transform', 'translate(-4px, 4px)');
         $computer.css('transform', 'translate(-4px, -5px)');
+    }
+    move4(){
         $computer.css('transform', 'translate(-4px, 4px)');
         $computer.css('transform', 'translate(10px, 5px)');
         $computer.css('transform', 'translate(4px, 4px)');
+    }
+    move5(){
         $computer.css('transform', 'translate(-10px, -3px)');
         $computer.css('transform', 'translate(-3px, 3px)');
         $computer.css('transform', 'translate(-3px, -10px)');
+    }
+    move6(){
         $computer.css('transform', 'translate(-3px, 30px)');
         $computer.css('transform', 'translate(3px, -5px)');
         $computer.css('transform', 'translate(3px, 3px)');
+    }
+    move7(){
         $computer.css('transform', 'translate(5px, 6px)');
         $computer.css('transform', 'translate(10px, 0px)');
         $computer.css('transform', 'translate(10px, 2px)');
+    }
+    move8(){
         $computer.css('transform', 'translate(4px, -2px)');
         $computer.css('transform', 'translate(2px, -4px)');
         $computer.css('transform', 'translate(-2px, -4px)');
+    }
+    move9(){
         $computer.css('transform', 'translate(10px, 0px)');
+    }
+    move10(){
+        
+    }
+    move11(){
+        
+    }   
+    move12(){
+        
+    }
+    move13(){
+        
+    }
+    move14(){
+        
+    }
     }
 }
 
@@ -194,25 +200,6 @@ const trivia = [
 ];
 
 
-
-// Create the question modal, not opening.
-const $questionModal = $('<div>')
-.attr('id', 'questionModal')
-.appendTo('#everything');
-const $questionModalText = $('<div>')
-.attr('id', 'questionModalText')
-.appendTo('#questionModal');
-const $userInput = $('<input>')
-.attr('type', 'text')
-.attr('id', 'userInput')
-.appendTo('#questionModal');
-const $userInputLabel = $('<label>')
-.attr('for', 'userInput')
-.appendTo('#userInput');
-const $userSubmit = $('button')
-.attr('id', 'userSubmit')
-.appendTo('#userInput');
-
 // Should create a div for each question in the trivia array and get appended to the question modal.
 const $trivia = trivia.map(item => {
     return $(`<div data-name='${item.question}' id='${item.id}'>${item.question}</div>`).css('display', 'none')
@@ -259,43 +246,6 @@ const compVersion = () => {
 }
 
 
-// Same logic just two players.
-const playerVersion = () => {
-    const player1 = () => {
-        for(let i = 0; i < trivia.length - 1; i++){
-            setTimeout(questions1, 3000);
-            function questions1(){
-                const $triviaQuestion = $('<div>')
-                $triviaQuestion = trivia[i].question.appendTo($questionModalText);
-                } 
-                if(trivia[i].answer == playerAnswer){
-                    player.Move();
-                } else {
-                    alert(`I\'m sorry ${player.name}that was wrong, player 2 will go.`);
-                    player2();
-        }
-    }   
-    player1();
-    const player2 = () => {
-                for(let i = 0; i < trivia.length - 1; i++){
-                    setTimeout(questions1, 3000);
-                    function questions1(){
-                        const $triviaQuestion = $('<div>')
-                        $triviaQuestion = trivia[i].question.appendTo($questionModalText);
-                        } 
-                        if(trivia[i].answer == playerAnswer){
-                            player_2.Move();
-                        } else {
-                            alert('I\'m sorry that was wrong, Player 1 will go.');
-                            player1();
-                }
-            }   
-        }
-
-
-    }
-}
-
 $(()=>{
     // Opening modals and making buttons clickable
     const $openBtn = $('#openModal');
@@ -307,8 +257,7 @@ $(()=>{
     const $modal1 = $('#modal1');
     const $form = $('form');
     const $input = $('#name');
-    const $compBtn = $('#compBtn');
-    const $playerBtn = $('#playerBtn');
+
 
     // Welcome button
     const welcome = () => {
@@ -327,12 +276,6 @@ $(()=>{
         event.preventDefault();
         $modal1.css('display', 'none');
         compVersion();
-    })
-    $playerBtn.on('click', (event)=> {
-        event.preventDefault();
-        $modal1.css('display', 'none');
-        $player2.css('display', 'block');
-        playerVersion();
     })
 
 
@@ -353,7 +296,6 @@ $(()=>{
     $closeBtn1.on('click', closeModal1);
 
     const player = new Player(playerName, $player);
-    const player_2 = new Player('', $player2);
     const computer = new Computer($computer);
 
 })
