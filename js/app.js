@@ -7,9 +7,11 @@ I have to set if statements that will loop, I want to let the user choose a dire
 // First the player will enter their name, then they will choose a difficulty?? after this a modal (to explain the rules will open) then when the close button is clicked it will go to the top right of the page. The rules are "Choose the number of players (up to 2 to start) or select computer. You will race to complete a maze but in order to move forward you have to answer a question correctly."
 // What classes are needed. A player class/factory and a computer class. 
 // What methods are needed, player will need to input their name (constructor). The next method is the move method, needed for both the computer and player... will translate the player (design options?) 100px in whichever direction they choose for the maze. 
-const $playerName = $('#name').val();
-let playerName = $playerName;
-let playerAnswer = '';
+
+// const $playerName = $('#name').val();
+// let playerName = $playerName;
+let playerName = null;
+let playerAnswer = null;
 let player1Right = '';
 let player2Right = '';
 // playerAnswer = $('#userInput').val();
@@ -21,7 +23,7 @@ const $player = $('<div>')
 .css('border-radius', '50%')
 .css('position', 'absolute')
 .css('color', 'black')
-.css('z-index', '4000')
+.css('z-index', '999')
 .appendTo('#everything');
 const $player2 = $('<div>')
 .attr('id', 'styleMe1')
@@ -31,7 +33,7 @@ const $player2 = $('<div>')
 .css('position', 'absolute')
 .css('color', 'blue')
 .css('display', 'none')
-.css('z-index', '4000')
+.css('z-index', '999')
 .appendTo('#everything');
 const $computer = $('<div>')
 .attr('id', 'styleComp')
@@ -40,7 +42,7 @@ const $computer = $('<div>')
 .css('border-radius', '50%')
 .css('position', 'absolute')
 .css('color', 'green')
-.css('z-index', '4000')
+.css('z-index', '999')
 .appendTo('#everything');
 
 
@@ -49,36 +51,36 @@ class Player {
         this.name = playerName;
     }
     moveUp(){
-        $(document).keydown(function(e) { 
-            if (e.which == '38') { //Up Arrow
-                $(".box").finish().animate({ 
+        $(document).keydown(function(event) { 
+            if (event.which == '38') { //Up Arrow
+                $("#styleMe").finish().animate({ 
                     top: "-=50" 
                 }); 
             } 
         });  
     }
     moveDown(){
-        $(document).keydown(function(e) { 
-            if (e.which == '40') {  //Down Arrow
-                $(".box").finish().animate({ 
+        $(document).keydown(function(event) { 
+            if (event.which == '40') {  //Down Arrow
+                $("#styleMe").finish().animate({ 
                     top: "+=50" 
                 }); 
             } 
         });  
     }
     moveLeft(){
-        $(document).keydown(function(e) { 
-            if (e.which == '39') { //Right Arrow
-                $(".box").finish().animate({ 
+        $(document).keydown(function(event) { 
+            if (event.which == '39') { //Right Arrow
+                $("#styleMe").finish().animate({ 
                     left: "+=50"
                 }); 
             } 
         });  
     }
     moveRight(){
-        $(document).keydown(function(e) { 
-            if (e.which == '37') { //Left Arrow
-                $(".box").finish().animate({ 
+        $(document).keydown(function(event) { 
+            if (event.which == '37') { //Left Arrow
+                $("#styleMe").finish().animate({ 
                     left: "-=50" 
                 }); 
             } 
@@ -86,8 +88,9 @@ class Player {
     }
 }
 
-const player = new Player(playerName);
-const player_2 = new Player('');
+
+
+
 
 class Computer {
     move(){
@@ -119,7 +122,12 @@ class Computer {
     }
 }
 
-const computer = new Computer();
+
+
+
+
+
+
 
 const trivia = [
     {
@@ -179,6 +187,13 @@ const trivia = [
     }
 ];
 
+// trivia.map(item => {
+//     return `<div data-name='${item.question}' id='${item.id}'>${item.question}</div>`
+// })
+// .appendTo($questionModal)
+// .css('display', 'none');
+
+
 const $questionModal = $('<div>')
 .attr('id', 'questionModal')
 .appendTo('#everything');
@@ -196,11 +211,13 @@ const $userSubmit = $('button')
 .attr('id', 'userSubmit')
 .appendTo('#userInput');
 
-// trivia.map(item => {
-//     return `<div data-name='${item.question}' id='${item.id}'>${item.question}</div>`
-// })
-// .appendTo($questionModal)
-// .css('display', 'none');
+
+
+
+
+
+
+
 
 const compVersion = () => {
     const game = () => {
@@ -213,10 +230,11 @@ const compVersion = () => {
                 if(trivia[i].answer == playerAnswer){
                     player.Move();
                 } else {
+                    alert('I\'m sorry that was wrong, the computer will go.');
                     computer();
         }
     }
-
+    game();
     const computer = () => {
         setTimeout(compMove, 3000)
         function compMove(){
@@ -225,6 +243,7 @@ const compVersion = () => {
                     computer.move()
                     computer();
             } else {
+                alert('The computer was wrong, your turn.');
                     game();
                     }
             }
@@ -243,9 +262,11 @@ const playerVersion = () => {
                 if(trivia[i].answer == playerAnswer){
                     player.Move();
                 } else {
+                    alert('I\'m sorry that was wrong, player 2 will go.');
                     player2();
         }
     }   
+    player1();
     const player2 = () => {
                 for(let i = 0; i < trivia.length - 1; i++){
                     setTimeout(questions1, 3000);
@@ -256,6 +277,7 @@ const playerVersion = () => {
                         if(trivia[i].answer == playerAnswer){
                             player_2.Move();
                         } else {
+                            alert('I\'m sorry that was wrong, Player 1 will go.');
                             player1();
                 }
             }   
@@ -278,6 +300,7 @@ $(()=>{
     const $compBtn = $('#compBtn');
     const $playerBtn = $('#playerBtn');
 
+
     const welcome = () => {
         $welcome.css('display', 'none');
         $section.css('display', 'block');
@@ -286,8 +309,8 @@ $(()=>{
 
     $form.on('submit', (event)=> {
         event.preventDefault();
-        playerAnswer = $input.val();
-        closeModal1();
+        playerName = $input.val();
+        console.log(playerName);
     }) 
     $compBtn.on('click', (event)=> {
         event.preventDefault();
@@ -317,6 +340,13 @@ $(()=>{
     $openBtn.on('click', openModal);
     $closeBtn.on('click', closeModal);
     $closeBtn1.on('click', closeModal1);
+
+    const player = new Player(playerName);
+    player = $player;
+    const player_2 = new Player('');
+    player_2 = $player2
+    const computer = new Computer();
+    computer = $computer;
 
 })
 

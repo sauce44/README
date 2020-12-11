@@ -111,9 +111,9 @@ section {
     z-index: 0; 
 }
 
-#computer {
+#compBtn {
     padding: 5px 8px;
-    background-color: lightcoral;
+    background-color: lightseagreen;
     border: none;
     outline: none;
     border-radius: 2px;
@@ -121,7 +121,7 @@ section {
     text-align: left;
 }
 
-#player2 {
+#playerBtn {
     padding: 5px 8px;
     background-color: lightgray;
     border: none;
