@@ -14,29 +14,14 @@
 <body>
     <header>
         <div id='funpage'>
-            <div id='a'></div>
-            <div id='b'></div>
-            <div id='c'></div>
-            <div id='d'></div>
-            <div id='e'></div>
-            <div id='f'></div>
                 <button id='start'>
                     <h1>Welcome</h1>
                 </button>
-            <div id='g'></div>
-            <div id='h'></div>
-            <div id='i'></div>
-            <div id='j'></div>
-            <div id='k'></div>
-            <div id='l'></div>
         </div>
     </header>
     <section id='everything'>
         <div id='modal1'>
                 <div id='modaltext1'>
-                    <a id='close1' href='#'>
-                        Close
-                    </a>
                     <form>
                     <label for='name'>
                         What's your name?: 
@@ -49,9 +34,6 @@
                     </p>
                     <button id='compBtn'>
                         Computer
-                    </button>
-                    <button id='playerBtn'>
-                        2 Player
                     </button>
                     <p>
                     
@@ -68,8 +50,25 @@
                 </p>
             </div>
         </div>
+        <div id='questionModal'>
+            <div id='questionModalText'>
+                <form id = question>
+                    <label for='name'>
+                        What's your answer?: 
+                        <input type='text' id='answer'/>
+                    </label>
+                    <input type='submit' id='submit-button1' value='Submit' />
+                    </form>
+            </div>
+        </div>
         <div id='gameboard'>
             <img id='gameboard' src='./index.jpg'>
+        </div>
+        <div id=player>
+            P
+        </div>
+        <div id='computer'>
+            C
         </div>
     </section>
 </body>

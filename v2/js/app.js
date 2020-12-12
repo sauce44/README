@@ -228,7 +228,6 @@ const $trivia = trivia.map(item => {
 const compVersion = () => {
     const game = () => {
         for(let i = 0; i < trivia.length - 1; i++){
-            setTimeout(questions, 3000);
             function questions(){
                 $trivia[i].val().css('display', 'block');
                 } 

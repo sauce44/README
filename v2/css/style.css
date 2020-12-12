@@ -93,16 +93,6 @@ h1{
     text-align: left;
 }
 
-#close1 {
-    padding: 5px 8px;
-    background-color: lightcoral;
-    border: none;
-    outline: none;
-    border-radius: 2px;
-    color: black;
-    text-align: left;
-}
-
 section {
     display: none;
 }
@@ -121,17 +111,7 @@ section {
     text-align: left;
 }
 
-#playerBtn {
-    padding: 5px 8px;
-    background-color: lightgray;
-    border: none;
-    outline: none;
-    border-radius: 2px;
-    color: black;
-    text-align: left;
-}
-
-#submit {
+#submit-button {
     padding: 5px 8px;
     background-color: lightblue;
     border: none;
@@ -141,55 +121,43 @@ section {
     text-align: left;
 }
 
-#a {
-    
+#submit-button1 {
+    padding: 5px 8px;
+    background-color: lightblue;
+    border: none;
+    outline: none;
+    border-radius: 2px;
+    color: black;
+    text-align: left;
 }
 
-#b {
-    
+#player {
+    height: 15px;
+    width: 15px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: lightcoral;
+    z-index: 999;
+    display: block;
+    position: absolute;
+    left: 2%;
+    top: 13%;
+    font-size: 10px;
 }
 
-#c {
-    
+#computer {
+    height: 12px;
+    width: 12px;
+    border-radius: 50%;
+    position: absolute;
+    background-color: lightblue;
+    z-index: 999;
+    display: block;
+    position: absolute;
+    left: 2%;
+    top: 12%;
+    font-size: 10px;
 }
 
-#d {
-    
-}
 
-#e {
-    
-}
 
-#f {
-    
-}
-
-#g {
-    
-}
-
-#h {
-    
-}
-
-#i {
-    
-}
-
-#j {
-    
-}
-
-#k {
-    
-}
-
-#l {
-    
-}
-
-@keyframes compMove {
-    0% {left: 10px; top: 10px}
-    100% {}
-}
